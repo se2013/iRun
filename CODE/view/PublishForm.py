@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*-
-from BaseHandler import *
+from controllerRoot import *
 
 class PublishForm(BaseHandler):
     def get(self):

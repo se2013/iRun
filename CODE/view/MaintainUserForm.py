@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*-
-from BaseHandler import *
+from controllerRoot import *
 
 class MaintainUserForm(BaseHandler):
     def get(self):
