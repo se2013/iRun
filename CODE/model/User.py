@@ -1,38 +1,61 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*-
 
-class User():
-    id = long()
-    account = str()
-    password = str()
-    name = str()
+from dbControl import *
 
-    def __init__(self, id, account, password, name):
-    	pass
+class User(object):
+    def __init__(self, *msg):
+        #register:
+        if len(msg) == 3:
+            self.__account = msg[0]
+            self.__name = msg[1]
+            self.__password = msg[2]
+
+        #login:
+        elif len(msg) == 2:
+            self.__account = msg[0]
+            self.__password = msg[1]
+            db = dbControl()
+            result = db.getUserByAccount(self.__account)
+            self.__userid = result[0][0]
+            self.__name = result[0][2]
 
     def getAccount(self):
-    	pass
-
-    def setAccount(self, account):
-    	pass
+        return self.__account
 
     def getPassword(self):
-    	pass
+        return self.__password
 
     def setPassword(self, password):
-    	pass
+        self.__password = password
+        db = dbControl()
+        db.updateUserPasswordById(self.__userid, password)
 
     def getName(self):
-    	pass
+        return self.__name
 
-    def setName(self):
-        pass
+    def setName(self, name):
+        self.__name = name
+        db = dbControl()
+        result = db.updateUserNameById(self.__userid, name)
 
     def getId(self):
-        pass
+        return self.__userid
 
-    def setId(self):
-        pass
+    def creatUser(self):
+        db = dbControl()
+        db.addUser(self.__account, self.__name, self.__password)
 
-    def createUser(self, id, account, password):
-        pass
+'''
+    def setAccount(self, account):
+        self.__account = account
+        db = dbControl()
+        db.updateUserAccountById(self.__userid, account)
+'''
+
+'''
+    def setId(self, userid):
+        self.userid = userid
+        db = dbControl()
+        result = db.updateUserIdById(self.__userid)
+'''
