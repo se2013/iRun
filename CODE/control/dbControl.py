@@ -1,13 +1,15 @@
-#coding=utf-8
+#!/usr/bin/env python 
+# -*- coding: utf-8 -*-
 
 import MySQLdb
 
 class dbControl():
     def __init__(self):
         self.conn = MySQLdb.connect(
-                       host = '127.0.0.1',
+                       host = '172.18.40.170',
                        port = 3306,
-                       user = 'root',
+                       user = 'user1',
+                       passwd = '123456',
                        db = 'iRun',
                        charset = 'utf8'
                        )
@@ -377,4 +379,4 @@ class dbControl():
             cursor.execute(sql)
         finally:
             cursor.close()
-            self.conn.commit() 
+            self.conn.commit()  

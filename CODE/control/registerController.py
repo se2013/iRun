@@ -68,10 +68,13 @@ class registerController(object):
             if !regex2.match(s):
                 return 'name should be consist of number, letter or Chinese'
         '''
+        tip1 = ''
+        tip2 = ''
         if self.__checkAccountOnly() != True:
             print self.__account + ' already exists!'
-            return False
+            tip1 = '账号已存在'
+
         if self.__checkNameOnly() != True:
             print self.__name + ' already exists!'
-            return False
-        return True
+            tip2 = '用户名已存在'
+        return [tip1, tip2]

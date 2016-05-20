@@ -1,1 +1,51 @@
 个人主页 
+
+<a href="/logout">退出</a>
+
+<p>名称{{ name }}</p>
+
+<form name="plan" action="/publish" method="post">
+时间
+<input type="text" name="time" />
+<br>
+地点
+<input type="text" name="place" />
+<br>
+联系方式
+<input type="text" name="contact_way" />
+<br>
+说明
+<textarea name='tips'></textarea>
+<br>
+
+<input type="submit" value="Submit" />
+</form>
+
+<br>
+<p>我的计划</p>
+{% for plan in my_plan %}
+<div>
+ 	<p>id：{{ plan[0] }}</p>
+ 	<p>时间：{{ plan[1] }}</p>
+ 	<p>地点：{{ plan[2] }}</p>
+ 	<p>联系方式：{{ plan[3] }}</p>
+ 	<p>发布者：{{ plan[4] }}</p>
+ 	<p>发布时间：{{ plan[5] }}</p>
+ 	<p>说明：{{ plan[6] }}</p>
+ </div>
+{% end %}
+
+<p>收藏计划</p>
+{% for plan in collect_plan %}
+<div>
+ 	<p>id：{{ plan[0] }}</p>
+ 	<p>时间：{{ plan[1] }}</p>
+ 	<p>地点：{{ plan[2] }}</p>
+ 	<p>联系方式：{{ plan[3] }}</p>
+ 	<p>发布者：{{ plan[4] }}</p>
+ 	<p>发布时间：{{ plan[5] }}</p>
+ 	<p>说明：{{ plan[6] }}</p>
+ </div>
+{% end %}
+
+

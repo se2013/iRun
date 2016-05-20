@@ -1,1 +1,24 @@
 登录页面
+
+{% if mode == 'user' %}
+	<p>用户登录</p>
+{% else %}
+	<p>管理员登录</p>
+{% end %}
+<form name="login" action="/" method="post">
+账号
+<input type="text" name="account" />
+<br>
+密码
+<input type="password" name="password" />
+<br>
+<input type="submit" value="Submit" />
+</form>
+
+{% if mode == 'user' %}
+	<a href="/admin">管理员登录</a>
+{% else %}
+	<a href="/">用户登录</a>
+{% end %}
+
+<a href="/register">注册</a>

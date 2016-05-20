@@ -19,21 +19,27 @@ from PublishForm import *
 from MaintainUserForm import *
 from MaintainPlanForm import *
 
+class LogoutHandler(BaseHandler):
+    def get(self):
+        self.clear_cookie('account')
+        self.redirect('/')
 
 settings = {
     "template_path": os.path.join(os.path.dirname(__file__), "templates"),
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
     "cookie_secret": "bZJc2sWbQLKos6GkHn/VB9oXwQt8S0R0kRvJ5/xJ89E=",
+    "login_url": "/",
     'debug': 'True',
 }
 
 application = tornado.web.Application([
-    (r'/', LoginForm),
+    (r'/(admin)?', LoginForm),
     (r'/register', RegisterForm),
     (r'/manage/(\w+)', ManageForm),
     (r'/publish', PublishForm),
     (r'/maintainuser', MaintainUserForm),
     (r'/maintainplan', MaintainPlanForm),
+    (r'/logout', LogoutHandler),
 ], **settings)
 
 if __name__ == "__main__":
