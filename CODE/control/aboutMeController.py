@@ -5,7 +5,7 @@ from modelRoot import *
 from dbControl import *
 from User import *
 
-class AboutMeController(object):
+class aboutMeController(object):
     def __init__(self, account, password):
         self.__user = User(account, password)
 
