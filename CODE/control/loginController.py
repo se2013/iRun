@@ -3,8 +3,6 @@
 
 from modelRoot import *
 from dbControl import *
-from User import *
-from Admin import *
 
 class loginController(object):
     def __init__(self, account, password):
