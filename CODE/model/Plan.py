@@ -1,4 +1,5 @@
-#coding=utf-8
+#!/usr/bin/env python 
+# -*- coding: utf-8 -*-
 
 class Plan(object):
 	def __init__(self, Id, Time, Place, Contact_Way, User_Id, Publish_Time, Tips):
