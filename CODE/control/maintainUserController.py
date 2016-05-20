@@ -3,9 +3,6 @@
 
 from modelRoot import *
 from dbControl import *
-from User import *
-from Admin import *
-from Plan import *
 
 class maintainUserController(object):
     def __init__(self):
