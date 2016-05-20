@@ -20,12 +20,10 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def is_user(self):
     	account = self.get_secure_cookie("account")
-    	if account == 'admin123':
+    	if not account:
+    		self.redirect('/')
     		return False
-    	return True
-
-    def is_admin(self):
-    	account = self.get_secure_cookie("account")
-    	if account == 'admin123':
+    	elif account == 'admin123':
+    		return False
+    	else:
     		return True
-    	return False

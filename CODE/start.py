@@ -35,7 +35,7 @@ settings = {
 application = tornado.web.Application([
     (r'/(admin)?', LoginForm),
     (r'/register', RegisterForm),
-    (r'/manage/(\w+)', ManageForm),
+    (r'/manage/(aboutMe|otherPlan)', ManageForm),
     (r'/publish', PublishForm),
     (r'/maintainuser', MaintainUserForm),
     (r'/maintainplan', MaintainPlanForm),

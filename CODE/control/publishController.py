@@ -10,3 +10,4 @@ class publishController(object):
 
     def insertPlan(self):
         self.__plan.createPlan()
+

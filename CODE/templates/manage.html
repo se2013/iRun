@@ -1,9 +1,30 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--是否允许缩放-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+<!--     <title>Courstack</title> -->
+<!--     <link rel="shortcut icon" type="image/gif" href={{ static_url("img/icon2.png") }}> -->
+    <!-- <link rel="stylesheet" href={{ static_url("css/login.css")}}> -->
+    <script src={{ static_url("js/jquery.min.js")}}></script>
+    <script src={{ static_url("js/collect.js")}}></script>
+</head>
+<body>
+
 个人主页 
+<br>
 
+名称<span class='name'>{{ name }}</span>
+<br>
+账号<span class='account'>{{ account }}</span>
+<br>
+
+<a href="/manage/aboutMe">与我有关</a>
+<a href="/manage/otherPlan">他人计划</a>
+<br>
 <a href="/logout">退出</a>
-
-<p>名称{{ name }}</p>
-
+<p>发布计划</p>
 <form name="plan" action="/publish" method="post">
 时间
 <input type="text" name="time" />
@@ -22,30 +43,57 @@
 </form>
 
 <br>
-<p>我的计划</p>
-{% for plan in my_plan %}
-<div>
- 	<p>id：{{ plan[0] }}</p>
- 	<p>时间：{{ plan[1] }}</p>
- 	<p>地点：{{ plan[2] }}</p>
- 	<p>联系方式：{{ plan[3] }}</p>
- 	<p>发布者：{{ plan[4] }}</p>
- 	<p>发布时间：{{ plan[5] }}</p>
- 	<p>说明：{{ plan[6] }}</p>
- </div>
+{% if mode == 'aboutMe' %}
+	<p>我的计划</p>
+	{% for plan in my_plan %}
+	<div>
+	 	<p>id：{{ plan[0] }}</p>
+	 	<p>时间：{{ plan[1] }}</p>
+	 	<p>地点：{{ plan[2] }}</p>
+	 	<p>联系方式：{{ plan[3] }}</p>
+	 	<p>发布者：{{ plan[4] }}</p>
+	 	<p>发布时间：{{ plan[5] }}</p>
+	 	<p>说明：{{ plan[6] }}</p>
+	 </div>
+	{% end %}
+
+	<p>收藏计划</p>
+	{% for plan in collect_plan %}
+	<div>
+	 	<p>id：{{ plan[0] }}</p>
+	 	<p>时间：{{ plan[1] }}</p>
+	 	<p>地点：{{ plan[2] }}</p>
+	 	<p>联系方式：{{ plan[3] }}</p>
+	 	<p>发布者：{{ plan[4] }}</p>
+	 	<p>发布时间：{{ plan[5] }}</p>
+	 	<p>说明：{{ plan[6] }}</p>
+	 </div>
+	{% end %}
+{% else %}
+	<p>他人计划</p>
+	{% for plan in other_plan %}
+	<div>
+	 	<p>id：{{ plan[0] }}</p>
+	 	<p>时间：{{ plan[1] }}</p>
+	 	<p>地点：{{ plan[2] }}</p>
+	 	<p>联系方式：{{ plan[3] }}</p>
+	 	<p>发布者：{{ plan[4] }}</p>
+	 	<p>发布时间：{{ plan[5] }}</p>
+	 	<p>说明：{{ plan[6] }}</p>
+	 	<button class='collect' value='{{ plan[0] }}'>收藏</button>
+	 </div>
+	{% end %}
 {% end %}
 
-<p>收藏计划</p>
-{% for plan in collect_plan %}
-<div>
- 	<p>id：{{ plan[0] }}</p>
- 	<p>时间：{{ plan[1] }}</p>
- 	<p>地点：{{ plan[2] }}</p>
- 	<p>联系方式：{{ plan[3] }}</p>
- 	<p>发布者：{{ plan[4] }}</p>
- 	<p>发布时间：{{ plan[5] }}</p>
- 	<p>说明：{{ plan[6] }}</p>
- </div>
-{% end %}
+
+
+
+
+
+
+
+</body>
+</html>
+
 
 
