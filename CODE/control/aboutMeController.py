@@ -3,7 +3,6 @@
 
 from modelRoot import *
 from dbControl import *
-from User import *
 
 class aboutMeController(object):
     def __init__(self, account, password):
