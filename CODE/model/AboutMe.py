@@ -1,6 +1,6 @@
 #coding=utf-8
 
-class AboutMe():
+class AboutMe(object):
 	def __init__(self, Id, User_Id, Plan_Id):
 		self.id = Id
 		self.user_id = User_Id
