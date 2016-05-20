@@ -1,4 +1,5 @@
-#coding=utf-8
+#!/usr/bin/env python 
+# -*- coding: utf-8 -*-
 
 class AboutMe(object):
 	def __init__(self, Id, User_Id, Plan_Id):
