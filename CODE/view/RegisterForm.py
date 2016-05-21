@@ -4,6 +4,7 @@ from controllerRoot import *
 
 class RegisterForm(BaseHandler):
     def get(self):
+        #如果登录，则自动跳转到用户or管理员页面
         if super(RegisterForm, self).have_login():
             return
         self.render('register.html',account_tip='', name_tip='', success='')

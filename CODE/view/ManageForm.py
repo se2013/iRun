@@ -5,6 +5,7 @@ from controllerRoot import *
 class ManageForm(BaseHandler):
     def get(self, mode):
         # mode分为aboutme和otherplan
+        # 未登录->登录页面；管理员登录->跳转到管理员页面
         if not super(ManageForm, self).is_user():
             return
 
@@ -30,5 +31,5 @@ class ManageForm(BaseHandler):
 
         otherPlan_controller = otherPlanController(account, '')
         otherPlan_controller.collectPlan(int(plan_id))
-        
+
 

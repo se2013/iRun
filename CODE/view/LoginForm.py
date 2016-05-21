@@ -5,7 +5,8 @@
 from controllerRoot import *
 
 class LoginForm(BaseHandler):
-    def get(self, mode):         
+    def get(self, mode):
+        #如果登录，则自动跳转到用户or管理员页面
         if super(LoginForm, self).have_login():
             return
         
