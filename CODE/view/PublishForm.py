@@ -9,15 +9,16 @@ class PublishForm(BaseHandler):
             return
 
     def post(self):
-        time = self.get_argument('time', '')
+        meet_time = self.get_argument('time', '')
         place = self.get_argument('place', '')
         contact_way = self.get_argument('contact_way', '')
         tips = self.get_argument('tips', '')
         account = self.get_secure_cookie("account")
+
         publish_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 
-        publish_controller = publishController(time, place, contact_way, account, publish_time, tips)
+        publish_controller = publishController(meet_time, place, contact_way, account, publish_time, tips)
         publish_controller.insertPlan()
         self.redirect('/manage/aboutMe')
 
