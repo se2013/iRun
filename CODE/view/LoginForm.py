@@ -29,6 +29,7 @@ class LoginForm(BaseHandler):
             else:
                 user = login_controller.getUserByAccount(account)
                 self.set_secure_cookie("account", account)
+                self.set_secure_cookie("mode", 'user')
                 self.set_cookie("name", user.getName())
                 print account
                 self.redirect('/manage/aboutMe')
@@ -41,6 +42,7 @@ class LoginForm(BaseHandler):
             else:
                 admin = login_controller.getAdminByAccount(account)
                 self.set_secure_cookie("account", account)
+                self.set_secure_cookie("mode", 'admin')
                 self.set_cookie("name", admin.getName())
                 self.redirect('/maintainuser')
 

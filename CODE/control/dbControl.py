@@ -80,7 +80,7 @@ class dbControl():
     def getAdminByAccount(self, account):
         cursor = self.conn.cursor()
         try:
-            sql = "SELECT * FROM admin WHERE account = %s" % (account)
+            sql = "SELECT * FROM admin WHERE account = '%s'" % (account)
             cursor.execute(sql)
             rs = cursor.fetchall();
             return rs
@@ -110,7 +110,7 @@ class dbControl():
     def getCreatePlanByUserAccount(self, account):
         cursor = self.conn.cursor()
         try:
-            sql = "SELECT * FROM plan WHERE create_user = %s" % (account)
+            sql = "SELECT * FROM plan WHERE create_user = '%s'" % (account)
             cursor.execute(sql)
             rs = cursor.fetchall();
             return rs
@@ -129,7 +129,7 @@ class dbControl():
     def deleteCreatePlanByPlanId(self, plan_id):
         cursor = self.conn.cursor()
         try:
-            sql = "DELETE FROM plan WHERE plan_id = %d" % (plan_id)
+            sql = "DELETE FROM plan WHERE id = %d" % (plan_id)
             cursor.execute(sql)
         finally:
             cursor.close()
@@ -306,7 +306,7 @@ class dbControl():
     def collectPlan(self,user_account,plan_id):
         cursor = self.conn.cursor()
         try:
-            sql = "INSERT collect VALUES(%s,%d)" % (user_account,plan_id)
+            sql = "INSERT collect VALUES('%s',%d)" % (user_account,plan_id)
             cursor.execute(sql)
             self.conn.commit()
         except Exception as e:

@@ -1,1 +1,38 @@
 管理员维护用户列表页面
+
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src={{ static_url("js/jquery.min.js")}}></script>
+    <script src={{ static_url("js/deleteUser.js")}}></script>
+</head>
+<body>
+
+管理员主页 
+<br>
+
+名称<span class='name'>{{ name }}</span>
+<br>
+账号<span class='account'>{{ account }}</span>
+<br>
+
+<a href="/maintainuser">用户账号维护</a>
+<a href="/maintainplan">夜跑计划维护</a>
+<br>
+<a href="/logout">退出</a>
+{%for user in all_user%}
+	<div>
+		账号：<span>{{user[1]}}</span>&nbsp;
+		密码：<span>{{user[2]}}</span>&nbsp;
+		用户名：<span>{{user[3]}}</span>
+		<button class='deleteUser' value='{{user[1]}}'>删除</button>
+	</div>
+{%end%}
+
+
+</body>
+</html>
+
+
+

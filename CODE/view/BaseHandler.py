@@ -9,9 +9,10 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def have_login(self):
     	account = self.get_secure_cookie("account")
-        if not account:
+    	mode = self.get_secure_cookie("mode")
+        if not account and not mode:
             return False
-        elif account == 'admin123':
+        elif mode == 'admin':
             self.redirect('/maintainuser')
             return True
         else:
@@ -21,11 +22,36 @@ class BaseHandler(tornado.web.RequestHandler):
     def is_user(self):
     	# 未登录->登录页面；管理员登录->跳转到管理员页面
     	account = self.get_secure_cookie("account")
-    	if not account:
+    	mode = self.get_secure_cookie("mode")
+    	if not account and not mode:
     		self.redirect('/')
     		return False
-    	elif account == 'admin123':
+    	elif mode == 'admin':
     		self.redirect('/maintainuser')
     		return False
     	else:
     		return True
+
+    def is_admin(self):
+    	# 未登录->登录页面；管理员登录->跳转到管理员页面
+    	account = self.get_secure_cookie("account")
+    	mode = self.get_secure_cookie("mode")
+    	print '8' * 30
+    	print account
+    	print mode
+    	if not account:
+    		self.redirect('/')
+    		return False
+    	elif mode != 'admin':
+    		self.redirect('/manage/aboutMe')
+    		print '8' * 30
+    		return False
+    	else:
+    		return True
+
+    def get(self):
+    	self.write_error(404)
+
+    def write_error(self, status_code, **kwargs):
+        if status_code == 404:
+            self.render('404.html')

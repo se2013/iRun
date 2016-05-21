@@ -15,14 +15,16 @@ class ManageForm(BaseHandler):
         if mode == 'aboutMe':
             aboutMe_controller = aboutMeController(account, '')
 
-            my_plan = aboutMe_controller.getCreatePlanByAboutMe()
-            collect_plan = aboutMe_controller.getCollectPlanByAboutMe()
+            my_plan = sorted(aboutMe_controller.getCreatePlanByAboutMe())
+            collect_plan = sorted(aboutMe_controller.getCollectPlanByAboutMe())
+            my_plan.reverse()
+            collect_plan.reverse()
 
             self.render('manage.html', mode=mode, name=name, account=account, my_plan=my_plan, collect_plan=collect_plan, other_plan='')
         else:
             otherPlan_controller = otherPlanController(account, '')
-
-            other_plan = otherPlan_controller.getPlanByOther()
+            other_plan = sorted(otherPlan_controller.getPlanByOther())
+            other_plan.reverse()
             self.render('manage.html', mode=mode, name=name, account=account, my_plan='', collect_plan='', other_plan=other_plan)
 
     def post(self, mode):

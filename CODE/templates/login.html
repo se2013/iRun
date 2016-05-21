@@ -2,18 +2,29 @@
 
 {% if mode == 'user' %}
 	<p>用户登录</p>
+	<form name="login" action="/" method="post">
+	账号
+	<input type="text" name="account" />
+	<br>
+	密码
+	<input type="password" name="password" />
+	<br>
+	<input type="submit" value="Submit" />
+</form>
+
 {% else %}
 	<p>管理员登录</p>
+	<form name="login" action="/admin" method="post">
+	账号
+	<input type="text" name="account" />
+	<br>
+	密码
+	<input type="password" name="password" />
+	<br>
+	<input type="submit" value="Submit" />
+	</form>
+
 {% end %}
-<form name="login" action="/" method="post">
-账号
-<input type="text" name="account" />
-<br>
-密码
-<input type="password" name="password" />
-<br>
-<input type="submit" value="Submit" />
-</form>
 
 {% if mode == 'user' %}
 	<a href="/admin">管理员登录</a>

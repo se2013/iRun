@@ -19,11 +19,11 @@ class maintainPlanController(object):
 
     def __deleteJoinPlanByPlanId(self, planid):
     	db = dbControl()
-    	result = db.deleteJoinPlanByPlanId(planid)
+    	db.deleteJoinPlanByPlanId(planid)
 
     def __deleteCreatePlanByPlanId(self, planid):
     	db = dbControl()
-    	result = db.deleteCreatePlanByPlanId(planid)
+    	db.deleteCreatePlanByPlanId(planid)
 
     def deletePlan(self, planid):
     	self.__deleteCollectPlanByPlanId(planid)

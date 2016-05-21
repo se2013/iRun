@@ -1,1 +1,42 @@
 管理员维护计划页面
+
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src={{ static_url("js/jquery.min.js")}}></script>
+    <script src={{ static_url("js/deletePlan.js")}}></script>
+</head>
+<body>
+
+管理员主页 
+<br>
+
+名称<span class='name'>{{ name }}</span>
+<br>
+账号<span class='account'>{{ account }}</span>
+<br>
+
+<a href="/maintainuser">用户账号维护</a>
+<a href="/maintainplan">夜跑计划维护</a>
+<br>
+<a href="/logout">退出</a>
+{%for plan in all_plan%}
+	<div>
+	 	<p>id：{{ plan[0] }}</p>
+	 	<p>时间：{{ plan[1] }}</p>
+	 	<p>地点：{{ plan[2] }}</p>
+	 	<p>联系方式：{{ plan[3] }}</p>
+	 	<p>发布者：{{ plan[4] }}</p>
+	 	<p>发布时间：{{ plan[5] }}</p>
+	 	<p>说明：{{ plan[6] }}</p>
+	 	<button class='deletePlan' value='{{ plan[0] }}'>删除</button>
+	 </div>
+{%end%}
+
+
+</body>
+</html>
+
+
+

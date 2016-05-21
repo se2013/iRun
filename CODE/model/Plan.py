@@ -1,47 +1,44 @@
-#!/usr/bin/env python 
-# -*- coding: utf-8 -*-
+from dbControl import *
 
 class Plan(object):
-	def __init__(self, Id, Time, Place, Contact_Way, User_Id, Publish_Time, Tips):
-		self.id = Id
-		self.time = Time
-		self.place = Place
-		self.contact_way = Contact_Way
-		self.user_id = User_Id
-		self.publish_time = Publish_Time
-		self.tips = Tips
+	def __init__(self, time, place, contact_way, account, publish_time, tips):
+		self.__time = time
+		self.__place = place
+		self.__contact_way = contact_way
+		self.__account = account
+		self.__publish_time = publish_time
+		self.__tips = tips
 
 	def getId(self):
-		return self.id
+		pass
 
-	def setId(self, Id):
-		self.id = Id
+	def setId(self, planid):
+		pass
 
 	def getTime(self):
-		return self.time
+		pass
 
-	def setTime(self, Time):
-		self.time = Time
+	def setTime(self, time):
+		pass
 
 	def getPlace(self):
-		return self.place
+		pass
 
-	def setPlace(self, Place):
-		self.place = Place
+	def setPlace(self, place):
+		pass
 
 	def getcontact_way(self):
-		return self.contact_way
+		pass
 
-	def setcontact_way(self, Contact_Way):
-		self.contact_way = Contact_Way
+	def setcontact_way(self, contact_way):
+		pass
 
 	def getTips(self):
-		return self.tips
+		pass
 
-	def setTips(self, Tips):
-		self.tips = Tips
+	def setTips(self, tips):
+		pass
 
-	@staticmethod
-	def creatPlan(Id, Time, Place, Contact_Way, User_Id, Publish_Time, Tips):
-		return Plan(Id, Time, Place, Contact_Way, User_Id, Publish_Time, Tips)
-		
+	def createPlan(self):
+		db = dbControl()
+		db.addPlan(self.__time, self.__place, self.__contact_way, self.__account, self.__publish_time, self.__tips)

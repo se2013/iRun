@@ -22,6 +22,7 @@ from MaintainPlanForm import *
 class LogoutHandler(BaseHandler):
     def get(self):
         self.clear_cookie('account')
+        self.clear_cookie('mode')
         self.redirect('/')
 
 settings = {
@@ -40,6 +41,7 @@ application = tornado.web.Application([
     (r'/maintainuser', MaintainUserForm),
     (r'/maintainplan', MaintainPlanForm),
     (r'/logout', LogoutHandler),
+    (r'/.*', BaseHandler),
 ], **settings)
 
 if __name__ == "__main__":
